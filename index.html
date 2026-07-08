@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yana Choudhary | Astrophysics Researcher & Innovator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #03040c;
+            --bg-space: #090a1a;
+            --bg-card: rgba(15, 18, 38, 0.65);
+            --bg-card-hover: rgba(26, 31, 65, 0.85);
+            --border-glass: rgba(147, 130, 255, 0.18);
+            --border-glass-glow: rgba(168, 85, 247, 0.45);
+            --text-primary: #ffffff;
+            --text-secondary: #a3b8cc;
+            --text-muted: #64748b;
+            --accent-cyan: #38bdf8;
+            --accent-indigo: #818cf8;
+            --accent-purple: #c084fc;
+            --accent-pink: #f472b6;
+            --glow-cyan: 0 0 20px rgba(56, 189, 248, 0.4);
+            --glow-purple: 0 0 25px rgba(192, 132, 252, 0.4);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --font-mono: 'Space Grotesk', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            padding-bottom: 110px;
+            /* Space for bottom navbar */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-indigo), var(--accent-purple));
+            border-radius: 4px;
+        }
+
+        /* Fixed Background Canvas for Space Animation Dots */
+        #space-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Astronomical Coordinate Grid HUD Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.028) 1px, transparent 1px);
+            background-size: 85px 85px;
+            z-index: -1;
+        }
+
+        /* Nebula Ambient Background Glows with Deep Space Breathing Animation */
+        .nebula-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.28;
+            z-index: -1;
+            pointer-events: none;
+            animation: nebulaDrift 20s ease-in-out infinite alternate;
+        }
+
+        .nebula-1 {
+            top: -12%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, #4f46e5 0%, #3b82f6 45%, transparent 75%);
+            animation-duration: 22s;
+        }
+
+        .nebula-2 {
+            top: 35%;
+            right: -10%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, #a855f7 0%, #ec4899 45%, transparent 75%);
+            animation-duration: 26s;
+            animation-delay: -5s;
+        }
+
+        .nebula-3 {
+            bottom: -5%;
+            left: 15%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, #06b6d4 0%, #3b82f6 50%, transparent 75%);
+            animation-duration: 24s;
+            animation-delay: -10s;
+        }
+
+        @keyframes nebulaDrift {
+            0% {
+                transform: scale(1) translate3d(0, 0, 0) rotate(0deg);
+                opacity: 0.22;
+            }
+
+            50% {
+                transform: scale(1.12) translate3d(30px, -20px, 0) rotate(8deg);
+                opacity: 0.32;
+            }
+
+            100% {
+                transform: scale(0.96) translate3d(-20px, 25px, 0) rotate(-6deg);
+                opacity: 0.25;
+            }
+        }
+
+        /* =========================================
+           HERO BANNER (CLIENT RESUME MATCHED STYLE)
+           ========================================= */
+        .hero-banner {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* Milky Way Galactic Arch Overlay */
+        .milky-way {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 60% 30%, rgba(168, 85, 247, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 40% 60%, rgba(56, 189, 248, 0.18) 0%, transparent 70%),
+                radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Hero Text Container Overlapping Silhouette */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin-top: -60px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #e0f2fe;
+            margin-bottom: 20px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+            position: relative;
+        }
+
+        /* Big Bold Overlapping Banner Typography matching Image */
+        .hero-title-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            user-select: none;
+        }
+
+        .hero-name-first {
+            font-family: var(--font-heading);
+            font-size: clamp(4.8rem, 14vw, 11.5rem);
+            font-weight: 900;
+            line-height: 0.82;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 65%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 45px rgba(255, 255, 255, 0.35));
+            z-index: 2;
+        }
+
+        .hero-name-last {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 6.8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: -12px;
+            z-index: 4;
+            filter: drop-shadow(0 10px 25px rgba(3, 4, 12, 0.9));
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.05rem, 2.3vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 780px;
+            margin: 0 auto 38px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-tagline strong {
+            color: #fff;
+            font-weight: 600;
+            background: linear-gradient(90deg, #38bdf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+            margin-top: 15px;
+        }
+
+        .stat-pill {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            padding: 14px 26px;
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-pill:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-pill i {
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+        }
+
+        .stat-pill .stat-text {
+            text-align: left;
+        }
+
+        .stat-pill .stat-num {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+
+        .stat-pill .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .mouse-icon {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 14px;
+            position: relative;
+        }
+
+        .mouse-icon::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            animation: scrollWheel 1.8s infinite;
+        }
+
+        @keyframes scrollWheel {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 14px);
+            }
+        }
+
+        /* =========================================
+           BOTTOM DOCKED NAVIGATION BAR
+           ========================================= */
+        .bottom-navbar {
+            position: fixed;
+            bottom: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            background: rgba(11, 14, 33, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 50px;
+            padding: 8px 14px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(139, 92, 246, 0.2);
+            transition: all 0.3s ease;
+            max-width: 95vw;
+            overflow-x: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        .nav-item a i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-item a.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(168, 85, 247, 0.85));
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            font-weight: 600;
+        }
+
+        .nav-item a:hover i,
+        .nav-item a.active i {
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 768px) {
+            .nav-item a span {
+                display: none;
+            }
+
+            .nav-item a {
+                padding: 12px 14px;
+            }
+
+            .nav-item a i {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* =========================================
+           MAIN CONTAINER & SECTION STYLES
+           ========================================= */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4.5vw, 3.3rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .section-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Glassmorphic Card Base with 3D Tilt Support */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 32px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at top right, rgba(139, 92, 246, 0.1), transparent 40%);
+            pointer-events: none;
+        }
+
+        /* Dynamic 3D Glare Spotlight on Hover */
+        .tilt-glare {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.13) 0%, rgba(56, 189, 248, 0.05) 30%, transparent 65%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 10;
+        }
+
+        .glass-card:hover .tilt-glare,
+        .award-category-card:hover .tilt-glare {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-glass-glow);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(139, 92, 246, 0.22);
+        }
+
+        /* 3D Scroll Reveal Animation Classes */
+        .reveal-3d {
+            opacity: 0;
+            transform: perspective(1200px) rotateX(10deg) translateY(45px) scale(0.97);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-3d.active {
+            opacity: 1;
+            transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+        }
+
+        /* Floating 3D Atomic Badge Animation */
+        @keyframes orbitSpin3D {
+            0% {
+                transform: rotateY(0deg) rotateZ(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotateY(180deg) rotateZ(12deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotateY(360deg) rotateZ(0deg) scale(1);
+            }
+        }
+
+        .hero-badge i {
+            animation: orbitSpin3D 5s linear infinite;
+            display: inline-block;
+        }
+
+        /* =========================================
+           ABOUT & ACADEMIC EXCELLENCE SECTION
+           ========================================= */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 960px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gpa-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+
+        .gpa-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent);
+            border: 3px solid var(--accent-cyan);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--glow-cyan);
+        }
+
+        .gpa-number {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .gpa-label {
+            font-size: 0.68rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        .gpa-details h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .gpa-details p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-primary);
+        }
+
+        .tag.highlight {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.4);
+            color: var(--accent-cyan);
+        }
+
+        .tag.purple {
+            background: rgba(192, 132, 252, 0.15);
+            border-color: rgba(192, 132, 252, 0.4);
+            color: var(--accent-purple);
+        }
+
+        /* Coursework Timeline Cards */
+        .coursework-box {
+            margin-top: 25px;
+        }
+
+        .course-group {
+            margin-bottom: 20px;
+        }
+
+        .course-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .course-group-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--accent-indigo);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* =========================================
+           RESEARCH & PROJECTS SECTION
+           ========================================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .project-card.featured {
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(30, 27, 75, 0.75));
+        }
+
+        .project-top {
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .project-badge {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .project-badge.mpi {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--accent-pink);
+            border-color: rgba(244, 114, 182, 0.4);
+        }
+
+        .project-badge.cern {
+            background: rgba(192, 132, 252, 0.15);
+            color: var(--accent-purple);
+            border-color: rgba(192, 132, 252, 0.4);
+        }
+
+        .project-date {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .project-inst {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* =========================================
+           COMPETITIONS & AWARDS TABS/GRID
+           ========================================= */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .award-category-card {
+            background: rgba(15, 20, 42, 0.7);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .award-cat-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .award-cat-title i {
+            color: var(--accent-cyan);
+            font-size: 1.4rem;
+        }
+
+        .award-item {
+            margin-bottom: 18px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+
+        .award-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .award-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .award-name {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .award-rank {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-cyan);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .award-rank.gold {
+            background: rgba(250, 204, 21, 0.15);
+            color: #facc15;
+            border: 1px solid rgba(250, 204, 21, 0.3);
+        }
+
+        .award-detail {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           LEADERSHIP & COMMUNITY SECTION
+           ========================================= */
+        .leadership-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .lead-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .lead-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .lead-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .lead-role {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .lead-info p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           SKILLS & PROFICIENCIES SECTION
+           ========================================= */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-box h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           CONTACT & FOOTER
+           ========================================= */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
+            border: 1px solid rgba(168, 85, 247, 0.5);
+            transition: all 0.3s ease;
+            box-shadow: var(--glow-purple);
+        }
+
+        .contact-email:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Space Background Animation Dots Canvas -->
+    <canvas id="space-canvas"></canvas>
+
+    <!-- Ambient Cosmic Nebula Glows -->
+    <div class="nebula-glow nebula-1"></div>
+    <div class="nebula-glow nebula-2"></div>
+    <div class="nebula-glow nebula-3"></div>
+
+    <!-- ====================================================
+         HERO BANNER (CLIENT RESUME MATCHED STYLE)
+         ==================================================== -->
+    <header class="hero-banner" id="home">
+        <div class="milky-way"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-atom"></i>
+                <span>Astrophysics • Research • Mentorship</span>
+            </div>
+
+            <!-- Bold Overlapping Typography matching Client Banner -->
+            <div class="hero-title-wrapper">
+                <h1 class="hero-name-first">YANA</h1>
+                <h2 class="hero-name-last">CHOUDHARY</h2>
+            </div>
+
+            <p class="hero-tagline">
+                Passionate <strong>Physics & Astrophysics Enthusiast</strong>, Computational Biology Researcher, and
+                Community Builder exploring the universe from elementary particles to exoplanetary systems.
+            </p>
+
+            <div class="hero-stats-bar">
+                <div class="stat-pill">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div class="stat-text">
+                        <div class="stat-num">3.99 / 4.26</div>
+                        <div class="stat-label">Unweighted / Weighted GPA</div>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <i class="fa-solid fa-globe"></i>
+                    <div class="stat-text">
+                        <div class="stat-num">1 of 9 Selected</div>
+                        <div class="stat-label">Max-Planck MPIA Intern</div>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div class="stat-text">
+                        <div class="stat-num">1st in World</div>
+                        <div class="stat-label">PurpleComet! Math Meet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll down indicator -->
+        <a href="#about" class="scroll-indicator" style="text-decoration:none;">
+            <span>Explore Portfolio</span>
+            <div class="mouse-icon"></div>
+        </a>
+    </header>
+
+    <!-- ====================================================
+         ABOUT & EDUCATION SECTION
+         ==================================================== -->
+    <section class="container" id="about">
+        <div class="section-header">
+            <span class="section-subtitle">Academic Profile</span>
+            <h2 class="section-title">Education & Rigor</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+            <div class="glass-card">
+                <div class="gpa-card" style="padding: 24px; border-radius: 16px; margin-bottom: 24px;">
+                    <div class="gpa-circle">
+                        <span class="gpa-number">3.99</span>
+                        <span class="gpa-label">Unweighted</span>
+                    </div>
+                    <div class="gpa-details">
+                        <h3>RC Palmer Secondary School</h3>
+                        <p>Pre-AP Incentive Program • Richmond, BC<br><strong style="color:var(--accent-cyan);">Expected
+                                Graduation: 2027</strong></p>
+                        <span class="tag highlight">Weighted GPA: 4.26</span>
+                    </div>
+                </div>
+
+                <h4 style="font-size:1.1rem; margin-bottom: 12px; color: #fff;">Accelerated Physics & STEM Track</h4>
+                <p style="color:var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem;">
+                    Completed high school physics curriculum two years ahead of standard track, mastering both
+                    conceptual and quantitative physical sciences alongside advanced AP coursework.
+                </p>
+                <div class="tag-list">
+                    <span class="tag highlight">Physics 11 (Grade 9)</span>
+                    <span class="tag highlight">Physics 12 (Grade 10)</span>
+                    <span class="tag">AP Calculus</span>
+                    <span class="tag">AP Psychology</span>
+                    <span class="tag">Chemistry 11/12</span>
+                    <span class="tag">Biology 11/12</span>
+                    <span class="tag">Honours Math 8–10</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3
+                    style="font-family:var(--font-heading); font-size: 1.45rem; margin-bottom: 18px; color:#fff; display:flex; align-items:center; gap:10px;">
+                    <i class="fa-solid fa-university" style="color:var(--accent-purple);"></i>
+                    Concurrent University Coursework
+                </h3>
+
+                <div class="coursework-box">
+                    <div class="course-group">
+                        <div class="course-group-header">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Thompson Rivers University (TRU Open Learning)</span>
+                        </div>
+                        <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.25);">
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                                <strong style="color:#fff;">PHYS 1203: General Physics 2</strong>
+                                <span class="tag purple">Ongoing University Credit</span>
+                            </div>
+                            <p style="font-size:0.88rem; color:var(--text-secondary);">
+                                Advanced electromagnetism, thermodynamics, optics, and introductory modern physics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="course-group" style="margin-top:20px;">
+                        <div class="course-group-header">
+                            <i class="fa-solid fa-microscope"></i>
+                            <span>UBC Access Studies Program</span>
+                        </div>
+                        <div class="glass-card" style="padding: 16px; background: rgba(0,0,0,0.25);">
+                            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom: 10px;">
+                                Enrolled and planned university mathematics & astrophysics track as a high school
+                                student:
+                            </p>
+                            <div class="tag-list">
+                                <span class="tag highlight">PHYS 113 / 109</span>
+                                <span class="tag">PHYS 106 / 108</span>
+                                <span class="tag">Linear Algebra</span>
+                                <span class="tag">Multivariable Calculus</span>
+                                <span class="tag purple">Astronomy & Astrophysics (Gr. 12)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         RESEARCH & PROJECTS SECTION
+         ==================================================== -->
+    <section class="container" id="research">
+        <div class="section-header">
+            <span class="section-subtitle">Pioneering Frontiers</span>
+            <h2 class="section-title">Research & Innovation Projects</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1: Haus der Astronomie -->
+            <div class="glass-card project-card featured">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge mpi">Selected 1 of 9 Worldwide</span>
+                        <span class="project-date">Summer 2026</span>
+                    </div>
+                    <h3 class="project-title">Haus der Astronomie International Internship (MPIA)</h3>
+                    <p class="project-desc">
+                        Sole Canadian selected among 9 international scholars. Undertaking intensive astrophysical
+                        research at the Haus der Astronomie, operating under the <strong>Max Planck Institute for
+                            Astronomy (MPIA)</strong> in partnership with Heidelberg University, Germany.
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-location-dot"
+                            style="color:var(--accent-pink);"></i> Heidelberg, Germany</span>
+                    <span class="tag">Max Planck Institute</span>
+                </div>
+            </div>
+
+            <!-- Project 2: CERN BL4S -->
+            <div class="glass-card project-card featured">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge cern">CERN Particle Proposal</span>
+                        <span class="project-date">Team BL4S-T Lead</span>
+                    </div>
+                    <h3 class="project-title">Muon-Based Pulse-Position Modulation (PPM)</h3>
+                    <p class="project-desc">
+                        Assembled and led a cross-Canada team of 8 students proposing a CERN accelerator experiment:
+                        investigating whether digital communication can be reliably transmitted through dense shielding
+                        by encoding messages in precise muon arrival timing.
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-atom" style="color:var(--accent-purple);"></i>
+                        Beamline for Schools</span>
+                    <span class="tag purple">Particle Physics</span>
+                </div>
+            </div>
+
+            <!-- Project 3: UBC Computational Biology Lab -->
+            <div class="glass-card project-card">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge">Bioinformatics Leadership</span>
+                        <span class="project-date">March 2026 – Ongoing</span>
+                    </div>
+                    <h3 class="project-title">Astronaut Cardiovascular Deconditioning Prevention</h3>
+                    <p class="project-desc">
+                        Leading a team of 5 at the <strong>UBC Computational Biology Lab (REO 2026)</strong>. Utilizing
+                        computational omics and bioinformatics workflows to investigate repurposing cardiovascular drugs
+                        to mitigate heart deconditioning in microgravity environments.
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-heart-pulse" style="color:var(--accent-cyan);"></i>
+                        UBC CompBio Lab</span>
+                    <span class="tag">Space Medicine</span>
+                </div>
+            </div>
+
+            <!-- Project 4: AI Space Debris Analyzer -->
+            <div class="glass-card project-card">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge">Independent Project</span>
+                        <span class="project-date">Ongoing Research</span>
+                    </div>
+                    <h3 class="project-title">AI Space Debris Analyzer for Optical Telescopes</h3>
+                    <p class="project-desc">
+                        Developing a predictive tool leveraging Space-Track orbital data to quantify space debris
+                        interference on ground-based astronomical observations, specifically targeting optimal
+                        observation windows for the <strong>Vera Rubin Observatory</strong>.
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-satellite" style="color:var(--accent-cyan);"></i>
+                        Orbital Astrometry</span>
+                    <span class="tag">Python / Space-Track</span>
+                </div>
+            </div>
+
+            <!-- Project 5: Exoplanet Light Curve Analysis -->
+            <div class="glass-card project-card">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge">Self-Directed Research</span>
+                        <span class="project-date">800+ Light Curves</span>
+                    </div>
+                    <h3 class="project-title">Exoplanet Detection via TESS & Kepler Data</h3>
+                    <p class="project-desc">
+                        Analyzed 800+ TESS satellite transit light curves via Zooniverse Planet Hunters. Applied Python
+                        data pipelines (NumPy, Matplotlib, Pandas, scikit-learn) to Kepler open-source datasets for
+                        automated transit anomaly classification.
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-star" style="color:var(--accent-cyan);"></i> NASA
+                        TESS / Kepler</span>
+                    <span class="tag">Data Science</span>
+                </div>
+            </div>
+
+            <!-- Project 6: Science Fair Innovations -->
+            <div class="glass-card project-card">
+                <div class="project-top">
+                    <div class="project-meta">
+                        <span class="project-badge">Award-Winning Fairs</span>
+                        <span class="project-date">Grades 8 – 9</span>
+                    </div>
+                    <h3 class="project-title">Seed in Space & NE2paste Formulations</h3>
+                    <p class="project-desc">
+                        • <strong>Seed in Space (Gr 9):</strong> Tested microgravity, UV/microwave radiation &
+                        near-vacuum effects on bean germination (Regional Silver Medal).<br>
+                        • <strong>NE2paste (Gr 8):</strong> Formulated non-toxic toothpaste outperforming commercial
+                        brands (SCWIST National Award & BC Junior Geoscience Award).
+                    </p>
+                </div>
+                <div class="project-footer">
+                    <span class="project-inst"><i class="fa-solid fa-medal" style="color:#facc15;"></i> Regional &
+                        National Silver</span>
+                    <span class="tag">Experimental Science</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         COMPETITIONS & AWARDS SECTION
+         ==================================================== -->
+    <section class="container" id="awards">
+        <div class="section-header">
+            <span class="section-subtitle">Excellence & Honors</span>
+            <h2 class="section-title">Competitions & Achievements</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="awards-grid">
+            <!-- Mathematics Awards -->
+            <div class="award-category-card">
+                <div class="award-cat-title">
+                    <i class="fa-solid fa-square-root-variable"></i>
+                    <span>Mathematics Olympiads</span>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">PurpleComet! Math Meet</span>
+                        <span class="award-rank gold">1st in World & Canada</span>
+                    </div>
+                    <p class="award-detail">Achieved Perfect Score globally in the international math competition.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">Pascal Math Contest (×2)</span>
+                        <span class="award-rank">Distinction (Top 5%)</span>
+                    </div>
+                    <p class="award-detail">Scores: 122 & 122 • Ranked Top 5% nationally in Canada.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">Cayley Math Contest</span>
+                        <span class="award-rank">Distinction (Top 3–5%)</span>
+                    </div>
+                    <p class="award-detail">Score: 122 • Top 3–5% nationally.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">Fermat & Euclid Contests</span>
+                        <span class="award-rank">Top 10% / Selected</span>
+                    </div>
+                    <p class="award-detail">Fermat Distinction (Score 116) • Selected 1 of 10 school-wide for Euclid.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Physics & Science Awards -->
+            <div class="award-category-card">
+                <div class="award-cat-title">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>Physics & Chemistry</span>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">Waterloo Physics SIN Contest (×2)</span>
+                        <span class="award-rank gold">Top 5% Canada</span>
+                    </div>
+                    <p class="award-detail">Certificate of Distinction • Top 15% worldwide. Organized contest at school
+                        (25+ participants).</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">UBC Physics Olympics 2025–26</span>
+                        <span class="award-rank gold">1st in Richmond</span>
+                    </div>
+                    <p class="award-detail">20th provincially (~85 teams). Cratering Lab 9th, Quizzics 15th — First time
+                        school ranked 1st in district.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">Waterloo Chem 13 Exam</span>
+                        <span class="award-rank">Top 8% Canada</span>
+                    </div>
+                    <p class="award-detail">Top Achiever Award • Top 10% worldwide.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">IAAC Astrophysics Finalist</span>
+                        <span class="award-rank">International Finalist</span>
+                    </div>
+                    <p class="award-detail">International Astronomy & Astrophysics Competition Finalist.</p>
+                </div>
+            </div>
+
+            <!-- Hackathons & School Recognition -->
+            <div class="award-category-card">
+                <div class="award-cat-title">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Hackathons & School Honors</span>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">YVRHacks Winner</span>
+                        <span class="award-rank gold">Beginner Code Award</span>
+                    </div>
+                    <p class="award-detail">Built AI web app converting blurry notes & textbooks into interactive OpenAI
+                        quizzes.</p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">NASA Space Hacks & Daydream</span>
+                        <span class="award-rank">Innovation Projects</span>
+                    </div>
+                    <p class="award-detail">Developed tamagotchi air quality monitor & light-beacon atmospheric game.
+                    </p>
+                </div>
+
+                <div class="award-item">
+                    <div class="award-top">
+                        <span class="award-name">School Subject & Service Awards</span>
+                        <span class="award-rank">Life Sci 11 / Band 10</span>
+                    </div>
+                    <p class="award-detail">2× Level-2 Service Awards (100+ hrs each), Performance Award & Regional
+                        Science Fair Silver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         LEADERSHIP, CLUBS & COMMUNITY IMPACT
+         ==================================================== -->
+    <section class="container" id="leadership">
+        <div class="section-header">
+            <span class="section-subtitle">Community & Leadership</span>
+            <h2 class="section-title">Clubs, Non-Profits & Outreach</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="leadership-list">
+            <div class="glass-card lead-card">
+                <div class="lead-icon">
+                    <i class="fa-solid fa-atom"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>Senior Physics Olympiad Club</h4>
+                    <span class="lead-role">Co-President</span>
+                    <p>Youngest member initially; now Co-President driving school-wide participation in KPU Senior
+                        Science Challenge, UBC Physics Olympics, and Waterloo SIN exams, achieving top-20 provincial
+                        ranks.</p>
+                </div>
+            </div>
+
+            <div class="glass-card lead-card">
+                <div class="lead-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>Palmer Robotics Club (VEX)</h4>
+                    <span class="lead-role">Co-President (Since Grade 8)</span>
+                    <p>Co-President of the district's longest-running VEX robotics club. Sole female representative;
+                        secured $1,000 in school funding and queued 10+ VEX kits for student engagement.</p>
+                </div>
+            </div>
+
+            <div class="glass-card lead-card">
+                <div class="lead-icon">
+                    <i class="fa-solid fa-campground"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>SHAD 2025 Residency (UWaterloo)</h4>
+                    <span class="lead-role">Nationally Competitive STEM Fellow</span>
+                    <p>Selected for 1-month residency (Unplugged stream). Led wildfire evacuation research for rural
+                        Canada, quantum mechanics IQC workshops, and coordinated 70-person Coffeehouse mystery
+                        masquerade.</p>
+                </div>
+            </div>
+
+            <div class="glass-card lead-card">4
+                <div class="lead-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>BASIC Youth & Study Stars Abroad</h4>
+                    <span class="lead-role">Co-Founder (Non-Profits)</span>
+                    <p>Co-Founded BC Youth Astro Initiative Society providing free astronomy workshops across BC
+                        libraries, and Study Stars Abroad fostering cross-cultural academic exchanges with Taiwan.</p>
+                </div>
+            </div>
+
+            <div class="glass-card lead-card">
+                <div class="lead-icon">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>SciQuest & Palmer Helping Hands</h4>
+                    <span class="lead-role">Founder & Co-President</span>
+                    <p>Founded SciQuest in Grade 8 partnering with Richmond Public Library to introduce elementary
+                        students to STEM. Founded Helping Hands connecting junior and senior students with community
+                        volunteering.</p>
+                </div>
+            </div>
+
+            <div class="glass-card lead-card">
+                <div class="lead-icon">
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+                <div class="lead-info">
+                    <h4>Rabbitat Shelter & Teen Ambassador</h4>
+                    <span class="lead-role">Dedicated Volunteer (50+ Hours)</span>
+                    <p>Dedicated 50+ hours caring for 170+ rescued rabbits. Serves as Teen Ambassador at Richmond Public
+                        Library, planning monthly teen initiatives and representing youth at Board meetings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         MENTORSHIP & MUSIC FINE ARTS SECTION
+         ==================================================== -->
+    <section class="container" id="mentorship">
+        <div class="about-grid">
+            <!-- Mentorship & Teaching -->
+            <div class="glass-card">
+                <div class="award-cat-title">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <span>Mentorship & STEM Coaching</span>
+                </div>
+                <div class="award-item">
+                    <strong style="color:#fff; display:block; font-size:1.05rem;">Science Fair Mentor & Head
+                        Judge</strong>
+                    <p style="color:var(--text-secondary); font-size:0.92rem; margin-top:6px;">
+                        Mentored Grade 8–9 students through experimental design, titration, and statistical validation
+                        (mentees ranked 4th locally). Organized, trained, and oversaw all judges as Head Judge for the
+                        local science fair.
+                    </p>
+                </div>
+                <div class="award-item">
+                    <strong style="color:#fff; display:block; font-size:1.05rem;">RCP Science Club Coach & Geering Up
+                        Instructor</strong>
+                    <p style="color:var(--text-secondary); font-size:0.92rem; margin-top:6px;">
+                        Taught chemistry and physics labs (Avogadro Exam prep). Served as Junior Instructor at Geering
+                        Up (UBC Engineering, 30+ hrs), mentoring K–7 classes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Music & Fine Arts -->
+            <div class="glass-card">
+                <div class="award-cat-title">
+                    <i class="fa-solid fa-music"></i>
+                    <span>Music & Fine Arts Performance</span>
+                </div>
+                <div class="award-item">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong style="color:#fff; font-size:1.05rem;">Honours Concert Band (Percussion)</strong>
+                        <span class="award-rank gold">MusicFest Nationals Silver</span>
+                    </div>
+                    <p style="color:var(--text-secondary); font-size:0.92rem; margin-top:6px;">
+                        Percussionist in RC Palmer Concert & Honours Band. Competed at MusicFest Nationals in Toronto
+                        (Silver Medal). MC for Gateway Inter-District and Year-End Concerts.
+                    </p>
+                </div>
+                <div class="award-item">
+                    <strong style="color:#fff; display:block; font-size:1.05rem;">Multi-Instrumental
+                        Proficiency</strong>
+                    <div class="tag-list" style="margin-top:10px;">
+                        <span class="tag purple">Piano (RCM Level 6 - 7 Yrs)</span>
+                        <span class="tag">Percussion (2.5 Yrs)</span>
+                        <span class="tag">Violin (Self-Taught 1.5 Yrs)</span>
+                        <span class="tag">Flute (3 Yrs)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         TECHNICAL SKILLS SECTION
+         ==================================================== -->
+    <section class="container" id="skills">
+        <div class="section-header">
+            <span class="section-subtitle">Toolkit & Capabilities</span>
+            <h2 class="section-title">Technical Proficiencies</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="glass-card skill-box">
+                <h4><i class="fa-solid fa-code"></i> Programming & Web</h4>
+                <div class="skill-chips">
+                    <div class="skill-chip"><i class="fa-brands fa-python" style="color:#38bdf8;"></i> Python (NumPy,
+                        Pandas)</div>
+                    <div class="skill-chip"><i class="fa-solid fa-chart-line" style="color:#a855f7;"></i> Matplotlib &
+                        scikit-learn</div>
+                    <div class="skill-chip"><i class="fa-brands fa-html5" style="color:#f97316;"></i> HTML5 & Semantic
+                        Web</div>
+                    <div class="skill-chip"><i class="fa-brands fa-css3-alt" style="color:#38bdf8;"></i> Modern CSS &
+                        Styling</div>
+                    <div class="skill-chip"><i class="fa-brands fa-js" style="color:#eab308;"></i> Vanilla JavaScript
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card skill-box">
+                <h4><i class="fa-solid fa-satellite-dish"></i> Research & Data Pipelines</h4>
+                <div class="skill-chips">
+                    <div class="skill-chip"><i class="fa-solid fa-star"></i> TESS / Kepler Light Curves</div>
+                    <div class="skill-chip"><i class="fa-solid fa-dna"></i> Bioinformatics Workflows</div>
+                    <div class="skill-chip"><i class="fa-solid fa-globe"></i> Space-Track Astrometry</div>
+                    <div class="skill-chip"><i class="fa-solid fa-microchip"></i> VEX Robotics Systems</div>
+                    <div class="skill-chip"><i class="fa-solid fa-flask"></i> Experimental Titration</div>
+                </div>
+            </div>
+
+            <div class="glass-card skill-box">
+                <h4><i class="fa-solid fa-language"></i> Languages & Leadership</h4>
+                <div class="skill-chips">
+                    <div class="skill-chip">English (Fluent)</div>
+                    <div class="skill-chip">Hindi (Conversational)</div>
+                    <div class="skill-chip">French (Basic)</div>
+                    <div class="skill-chip">Public Speaking & MC</div>
+                    <div class="skill-chip">Event & Non-Profit Leadership</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         FOOTER & CONTACT
+         ==================================================== -->
+    <footer id="contact">
+        <div class="contact-box">
+            <span class="section-subtitle">Let's Collaborate</span>
+            <h2 style="font-family:var(--font-heading); font-size:2.2rem; margin-bottom:20px; color:#fff;">Connect with
+                Yana</h2>
+            <p style="color:var(--text-secondary); margin-bottom: 28px;">
+                Interested in astrophysical research collaborations, science outreach, or mentorship opportunities?
+            </p>
+            <a href="mailto:msyanajain@gmail.com" class="contact-email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>msyanajain@gmail.com</span>
+            </a>
+        </div>
+        <p class="footer-text">
+            © 2026 Yana Choudhary • Richmond, BC, Canada • Crafted with Precision & Astrophysical Aesthetics
+        </p>
+    </footer>
+
+    <!-- ====================================================
+         BOTTOM DOCKED NAVIGATION BAR (CLIENT REQUIREMENT)
+         ==================================================== -->
+    <nav class="bottom-navbar" id="bottomNav">
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="#home" class="active" data-section="home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" data-section="about">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span>Education</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#research" data-section="research">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    <span>Research</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#awards" data-section="awards">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Awards</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#leadership" data-section="leadership">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Leadership</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#mentorship" data-section="mentorship">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Mentorship</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#skills" data-section="skills">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Skills</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" data-section="contact">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ====================================================
+         SINGLE-FILE JAVASCRIPT: SPACE DOT ANIMATION & NAV
+         ==================================================== -->
+    <script>
+        /* ----------------------------------------------------
+           1. HTML5 Canvas Space Dots & Stars Animation
+           ---------------------------------------------------- */
+        const canvas = document.getElementById('space-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initStars();
+        });
+
+        // Mouse interaction coordinates
+        const mouse = { x: width / 2, y: height / 2, moved: false };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            mouse.moved = true;
+        });
+
+        class StarDot {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                this.y = initial ? Math.random() * height : -10;
+                this.isPulsar = Math.random() < 0.08; // 8% pulsar glowing stars
+                this.size = this.isPulsar ? Math.random() * 2.8 + 2.0 : Math.random() * 2.2 + 0.6;
+                this.baseAlpha = Math.random() * 0.75 + 0.2;
+                this.alpha = this.baseAlpha;
+                this.twinkleSpeed = (Math.random() * 0.02) + 0.005;
+                this.twinkleDir = Math.random() > 0.5 ? 1 : -1;
+                // Slight drift upward/downward and sideways
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.35;
+                // Colors: cyan, white, soft indigo, pink accents
+                const colors = ['#ffffff', '#38bdf8', '#818cf8', '#c084fc', '#e0f2fe', '#f472b6'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Subtle parallax interaction near mouse cursor
+                if (mouse.moved) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 130) {
+                        this.x -= (dx / dist) * 0.4;
+                        this.y -= (dy / dist) * 0.4;
+                    }
+                }
+
+                // Twinkle effect
+                this.alpha += this.twinkleSpeed * this.twinkleDir;
+                if (this.alpha > 0.95) {
+                    this.alpha = 0.95;
+                    this.twinkleDir = -1;
+                } else if (this.alpha < 0.15) {
+                    this.alpha = 0.15;
+                    this.twinkleDir = 1;
+                }
+
+                // Wrap around edges
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+
+                if (this.isPulsar) {
+                    // Pulsar outer glowing aura ring
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.alpha * 0.25;
+                    ctx.fill();
+                    ctx.globalAlpha = this.alpha;
+                }
+
+                ctx.shadowBlur = this.isPulsar ? this.size * 8 : this.size * 4;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Shooting Star Meteor Class
+        class ShootingStar {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * (height * 0.4);
+                this.len = Math.random() * 80 + 40;
+                this.speed = Math.random() * 8 + 6;
+                this.angle = Math.PI / 4; // 45 deg diagonal
+                this.active = false;
+            }
+
+            spawn() {
+                this.active = true;
+                this.x = Math.random() * width;
+                this.y = -20;
+            }
+
+            update() {
+                if (!this.active) return;
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+
+                if (this.y > height || this.x > width) {
+                    this.active = false;
+                }
+            }
+
+            draw() {
+                if (!this.active) return;
+                ctx.save();
+                ctx.strokeStyle = 'rgba(192, 132, 252, 0.7)';
+                ctx.lineWidth = 1.8;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#38bdf8';
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(
+                    this.x - Math.cos(this.angle) * this.len,
+                    this.y - Math.sin(this.angle) * this.len
+                );
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+
+        let stars = [];
+        let shootingStar = new ShootingStar();
+        let mouseSpace = { x: -1000, y: -1000 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouseSpace.x = e.clientX;
+            mouseSpace.y = e.clientY;
+        });
+
+        function initStars() {
+            stars = [];
+            const count = Math.floor((width * height) / 4800); // Responsive density
+            for (let i = 0; i < Math.min(count, 220); i++) {
+                stars.push(new StarDot());
+            }
+        }
+
+        initStars();
+
+        // Occasional shooting star trigger
+        setInterval(() => {
+            if (!shootingStar.active && Math.random() < 0.65) {
+                shootingStar.spawn();
+            }
+        }, 3500);
+
+        function animateSpace() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < stars.length; i++) {
+                const star = stars[i];
+                star.update();
+                star.draw();
+
+                // Connect nearby stars to mouse for interactive constellation effect
+                const dx = star.x - mouseSpace.x;
+                const dy = star.y - mouseSpace.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < 140) {
+                    ctx.save();
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - dist / 140) * 0.35})`;
+                    ctx.lineWidth = 0.85;
+                    ctx.beginPath();
+                    ctx.moveTo(star.x, star.y);
+                    ctx.lineTo(mouseSpace.x, mouseSpace.y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            shootingStar.update();
+            shootingStar.draw();
+
+            requestAnimationFrame(animateSpace);
+        }
+
+        animateSpace();
+
+        /* ----------------------------------------------------
+           2. Bottom Navbar Active Scroll Spy
+           ---------------------------------------------------- */
+        const navLinks = document.querySelectorAll('.nav-item a');
+        const sections = document.querySelectorAll('header, section, footer');
+
+        window.addEventListener('scroll', () => {
+            let current = 'home';
+            const scrollPos = window.scrollY + window.innerHeight * 0.45;
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        /* ----------------------------------------------------
+           3. 3D Interactive Card Tilt & Glare Engine
+           ---------------------------------------------------- */
+        function init3DCards() {
+            const cards = document.querySelectorAll('.glass-card, .stat-pill, .award-category-card');
+
+            cards.forEach(card => {
+                // Dynamically inject glare highlight element
+                if (!card.querySelector('.tilt-glare')) {
+                    const glare = document.createElement('div');
+                    glare.className = 'tilt-glare';
+                    card.appendChild(glare);
+                }
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    // Calculate rotation angles
+                    const rotateX = ((y - centerY) / centerY) * -9; // Max 9 deg tilt
+                    const rotateY = ((x - centerX) / centerX) * 11; // Max 11 deg tilt
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(8px)`;
+                    card.style.setProperty('--mouse-x', `${(x / rect.width * 100).toFixed(1)}%`);
+                    card.style.setProperty('--mouse-y', `${(y / rect.height * 100).toFixed(1)}%`);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+        }
+
+        /* ----------------------------------------------------
+           4. 3D Hero Holographic Typography Parallax
+           ---------------------------------------------------- */
+        function initHero3DParallax() {
+            const firstWord = document.querySelector('.hero-name-first');
+            const lastWord = document.querySelector('.hero-name-last');
+            const milkyWay = document.querySelector('.milky-way');
+
+            if (!firstWord || !lastWord) return;
+
+            window.addEventListener('mousemove', (e) => {
+                const normalizedX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+                const normalizedY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+                firstWord.style.transform = `perspective(1000px) translate3d(${normalizedX * -14}px, ${normalizedY * -10}px, 20px) rotateY(${normalizedX * 7}deg) rotateX(${-normalizedY * 5}deg)`;
+                lastWord.style.transform = `perspective(1000px) translate3d(${normalizedX * 16}px, ${normalizedY * 12}px, 35px) rotateY(${normalizedX * 9}deg) rotateX(${-normalizedY * 7}deg)`;
+
+                if (milkyWay) {
+                    milkyWay.style.transform = `translate3d(${normalizedX * -25}px, ${normalizedY * -15}px, 0)`;
+                }
+            });
+        }
+
+        /* ----------------------------------------------------
+           5. 3D Scroll Reveal Intersection Observer
+           ---------------------------------------------------- */
+        function init3DScrollReveal() {
+            const revealElements = document.querySelectorAll('.glass-card, .award-category-card, .section-header');
+
+            revealElements.forEach((el, index) => {
+                el.classList.add('reveal-3d');
+                el.style.transitionDelay = `${(index % 3) * 0.12}s`;
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // Initialize all 3D enhancements once DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            init3DCards();
+            initHero3DParallax();
+            init3DScrollReveal();
+        });
+        // Run immediately in case DOM is already loaded
+        init3DCards();
+        initHero3DParallax();
+        init3DScrollReveal();
+    </script>
+</body>
+
+</html>
